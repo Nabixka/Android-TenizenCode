@@ -1,0 +1,12 @@
+    apache
+    <Limit GET POST PUT DELETE OPTIONS>
+        Allow from all
+    </Limit>
+    <LimitExcept GET POST PUT DELETE OPTIONS>
+        Deny from all
+    </LimitExcept>
+
+    RewriteEngine On
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    
